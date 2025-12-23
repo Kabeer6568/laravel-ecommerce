@@ -20,7 +20,8 @@
         <link href="lib/slick/slick-theme.css" rel="stylesheet">
 
         <!-- Template Stylesheet -->
-        <link href="css/style.css" rel="stylesheet">
+        <!-- <link href="css/style.css" rel="stylesheet"> -->
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
 
     <body>
@@ -262,6 +263,6 @@
 
         
         <!-- Template Javascript -->
-        <script src="js/main.js"></script>
+        <!-- <script src="js/main.js"></script> -->
     </body>
 </html>

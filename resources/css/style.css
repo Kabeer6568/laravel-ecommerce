@@ -1745,3 +1745,22 @@ button.btn {
         text-align: center; 
     } 
 }
+
+/* Force navigation to show on desktop */
+@media (min-width: 768px) {
+    .header .navbar-collapse {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+    
+    .header .navbar-nav {
+        display: flex !important;
+    }
+    
+    .header .nav-link {
+        display: block !important;
+        color: #ffffff !important;
+        padding: 8px 15px !important;
+    }
+}

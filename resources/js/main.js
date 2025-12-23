@@ -196,5 +196,8 @@
     });
 })(jQuery);
 
-// resources/js/main.js
-console.log('main.js loaded successfully!');
+$(document).ready(function() {
+    $('.navbar-toggler').click(function() {
+        $('.navbar-collapse').toggleClass('show');
+    });
+});
