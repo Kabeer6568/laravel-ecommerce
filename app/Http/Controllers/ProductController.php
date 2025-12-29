@@ -9,7 +9,7 @@ class ProductController extends Controller
 {
     public function viewProducts($page = 'list'){
 
-        $products = Product::get();
+        $products = Product::paginate(15);
 
         $viewPath = ($page === 'home') ? 'layouts/index' : 'layouts/product-list';
 
