@@ -16,4 +16,12 @@ class ProductController extends Controller
         return view($viewPath , compact('products'));
 
     }
+
+    public function show($slug){
+
+        $product = Product::where('slug' , $slug)->firstOrFail();
+
+        return view('layouts/product-details' , compact('product'));
+
+    }
 }

@@ -128,7 +128,7 @@
                                 </div>
                             </div>
                             <div class="product-content">
-                                <div class="title"><a href="#">{{$product->name}}</a></div>
+                                <div class="title"><a href="product/{{$product->slug}}">{{$product->name}}</a></div>
                                 <div class="ratting">
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
@@ -192,7 +192,7 @@
                                 </div>
                             </div>
                             <div class="product-content">
-                                <div class="title"><a href="#">{{$product->name}}</a></div>
+                                <div class="title"><a href="product/{{$product->slug}}">{{$product->name}}</a></div>
                                 <div class="ratting">
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
