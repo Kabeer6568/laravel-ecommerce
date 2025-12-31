@@ -17,6 +17,12 @@
         
         
         <!-- Cart Start -->
+
+        @if (empty($cart))
+            <p>
+                Your Cart is empty
+            </p>
+        @else
         <div class="cart-page">
             <div class="container">
                 <div class="row">
@@ -33,19 +39,21 @@
                                         <th>Remove</th>
                                     </tr>
                                 </thead>
+                                
                                 <tbody class="align-middle">
+                                    @foreach ($cart as $id=>$item)
                                     <tr>
                                         <td><a href="#"><img src="img/product-1.png" alt="Image"></a></td>
-                                        <td><a href="#">Product Name</a></td>
-                                        <td>$22</td>
+                                        <td><a href="#">{{$item['name']}}</a></td>
+                                        <td>{{$item['price']}}</td>
                                         <td>
                                             <div class="qty">
                                                 <button class="btn-minus"><i class="fa fa-minus"></i></button>
-                                                <input type="text" value="1">
+                                                <input type="text" value="{{$item['quantity']}}">
                                                 <button class="btn-plus"><i class="fa fa-plus"></i></button>
                                             </div>
                                         </td>
-                                        <td>$22</td>
+                                        <td>{{number_format($item['price'] * $item['quantity'], 2) }}</td>
                                         <td><button><i class="fa fa-trash"></i></button></td>
                                     </tr>
                                     <tr>
@@ -76,11 +84,13 @@
                                         <td>$22</td>
                                         <td><button><i class="fa fa-trash"></i></button></td>
                                     </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
+                @endif
                 <div class="row">
                     <div class="col-md-6">
                         <div class="coupon">

@@ -122,13 +122,21 @@
                                     <img src="https://www.{{$product->image}}" alt="Product Image">
                                 </a>
                                 <div class="product-action">
-                                    <a href="#"><i class="fa fa-cart-plus"></i></a>
+                                    
+                                    <form action="{{route('products.addToCart')}}" method="POST">
+                                        @csrf
+                                    <input type="hidden" name="product_id" value="{{$product->id}}">    
+                                    <button type="submit"><i class="fa fa-cart-plus"></i></button>
+                                        
+                                    </form>
+
                                     <a href="#"><i class="fa fa-heart"></i></a>
                                     <a href="#"><i class="fa fa-search"></i></a>
                                 </div>
                             </div>
                             <div class="product-content">
                                 <div class="title"><a href="product/{{$product->slug}}">{{$product->name}}</a></div>
+                                <!-- <a href="{{ route('cart.clear') }}" class="btn btn-danger">Clear Cart</a> -->
                                 <div class="ratting">
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
