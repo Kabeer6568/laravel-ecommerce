@@ -62,4 +62,25 @@ class ProductController extends Controller
         return view('layouts.cart' , compact('cart' , 'total'));
 
     }
+
+    public function updateCart(Request $request){
+
+        $productId = $request->input('product_id');
+        $quantity = $request->input('quantity');
+
+        $cart = session('cart' , []);
+
+        if (isset($cart[$productId])) {
+            $cart[$productId]['quantity'] = $quantity;
+        }
+
+        session(['cart' => $cart]);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Cart Updated',
+            'cart' => $cart
+        ]);
+
+    }
 }

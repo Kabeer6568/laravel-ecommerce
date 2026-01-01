@@ -163,16 +163,82 @@
     $('.qty button').on('click', function () {
         var $button = $(this);
         var oldValue = $button.parent().find('input').val();
+        const qtyDiv = $button.closest('.qty');
+        const row = $button.closest('tr');
+        // const productElement = document.getElementById('product_info');
+
+        const productId = qtyDiv.attr('data-product-id');
+        // let productQty = productElement.getElementById('product_qty').getAttribute('data-product-qty');
+        let productPrice =  parseFloat(row.find('[data-product-price]').attr('data-product-price')) ;
+        let totalPrice
+
         if ($button.hasClass('btn-plus')) {
             var newVal = parseFloat(oldValue) + 1;
+            // productQty = newVal;
+            // totalPrice = productPrice*productQty;
+            // console.log(totalPrice);
         } else {
             if (oldValue > 0) {
                 var newVal = parseFloat(oldValue) - 1;
+                // productQty = newVal;
+                // totalPrice = productPrice*productQty;
+                // console.log(totalPrice);
             } else {
                 newVal = 0;
             }
         }
+
+        totalPrice = productPrice * newVal;
+        // console.log('Product Id : ' , productId)
+        // console.log('Product Price : ' , productPrice)
+        // console.log('Product Qty : ' , newVal)
+        // console.log('Product Total : ' , totalPrice)
+        
         $button.parent().find('input').val(newVal);
+
+        
+
+        fetch('/cart/update' , {
+            method: 'POST',
+            headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+    },
+            body: JSON.stringify({
+                product_id: productId,
+                quantity: newVal,
+            })
+            
+        })
+        .then(response => response.json())
+    .then(data => {
+        console.log('Success:', data);
+        
+        // Update the subtotal for this row
+        const subtotal = productPrice * newVal;
+        row.find('.subtotal').text('$' + subtotal.toFixed(2));
+        
+        // Recalculate and update grand total
+        let grandTotal = 0;
+        $('tbody tr').each(function() {
+            const rowSubtotal = parseFloat($(this).find('.subtotal').text().replace('$', ''));
+            if (!isNaN(rowSubtotal)) {
+                grandTotal += rowSubtotal;
+            }
+        });
+        
+        // Update grand total display
+        $('.cart-summary .total-amount').text('$' + grandTotal.toFixed(2));
+        // OR if your total is in a different place, adjust the selector
+        
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Failed to update cart. Please try again.');
+    });
+        
+        
+
     });
     
     

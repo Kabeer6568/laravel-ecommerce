@@ -45,45 +45,18 @@
                                     <tr>
                                         <td><a href="#"><img src="img/product-1.png" alt="Image"></a></td>
                                         <td><a href="#">{{$item['name']}}</a></td>
-                                        <td>{{$item['price']}}</td>
+                                        <td id="product_price" data-product-price = "{{$item['price']}}">{{$item['price']}}</td>
                                         <td>
-                                            <div class="qty">
+                                            <div class="qty" id="product_info" data-product-id="{{$id}}">
                                                 <button class="btn-minus"><i class="fa fa-minus"></i></button>
-                                                <input type="text" value="{{$item['quantity']}}">
+                                                <input type="text" id="product_qty" data-product-qty = "{{$item['quantity']}}" value="{{$item['quantity']}}">
                                                 <button class="btn-plus"><i class="fa fa-plus"></i></button>
                                             </div>
                                         </td>
-                                        <td>{{number_format($item['price'] * $item['quantity'], 2) }}</td>
+                                        <td class="subtotal">{{number_format($item['price'] * $item['quantity'], 2) }}</td>
                                         <td><button><i class="fa fa-trash"></i></button></td>
                                     </tr>
-                                    <tr>
-                                        <td><a href="#"><img src="img/product-2.png" alt="Image"></a></td>
-                                        <td><a href="#">Product Name</a></td>
-                                        <td>$22</td>
-                                        <td>
-                                            <div class="qty">
-                                                <button class="btn-minus"><i class="fa fa-minus"></i></button>
-                                                <input type="text" value="1">
-                                                <button class="btn-plus"><i class="fa fa-plus"></i></button>
-                                            </div>
-                                        </td>
-                                        <td>$22</td>
-                                        <td><button><i class="fa fa-trash"></i></button></td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="#"><img src="img/product-3.png" alt="Image"></a></td>
-                                        <td><a href="#">Product Name</a></td>
-                                        <td>$22</td>
-                                        <td>
-                                            <div class="qty">
-                                                <button class="btn-minus"><i class="fa fa-minus"></i></button>
-                                                <input type="text" value="1">
-                                                <button class="btn-plus"><i class="fa fa-plus"></i></button>
-                                            </div>
-                                        </td>
-                                        <td>$22</td>
-                                        <td><button><i class="fa fa-trash"></i></button></td>
-                                    </tr>
+                                    
                                     @endforeach
                                 </tbody>
                             </table>
@@ -102,9 +75,9 @@
                         <div class="cart-summary">
                             <div class="cart-content">
                                 <h3>Cart Summary</h3>
-                                <p>Sub Total<span>$22</span></p>
+                                <p>Sub Total<span>${{ number_format($total, 2) }}</span></p>
                                 <p>Shipping Cost<span>$1</span></p>
-                                <h4>Grand Total<span>$23</span></h4>
+                                <h4>Grand Total<span>${{ number_format($total, 2) }}</span></h4>
                             </div>
                             <div class="cart-btn">
                                 <button>Update Cart</button>

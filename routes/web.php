@@ -12,6 +12,7 @@ Route::get('/product/{product:slug}', [ProductController:: class, 'show'])->name
 Route::post('/add-to-cart', [ProductController:: class, 'addToCart'])->name('products.addToCart');
 Route::get('/add-to-cart', [ProductController:: class, 'cart'])->name('products.showCart');
 
+Route::post('/cart/update', [ProductController:: class, 'updateCart'])->name('products.updateCart');
 
 Route::get('/clear-cart', function() {
     session()->forget('cart');
