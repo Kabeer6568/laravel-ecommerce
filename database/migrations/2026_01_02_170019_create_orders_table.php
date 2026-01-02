@@ -22,6 +22,9 @@ return new class extends Migration
             $table->string('city');
             $table->string('state');
             $table->string('zipcode');
+            $table->decimal('total_amount', 10, 2);
+            $table->enum('status', ['pending', 'processing', 'completed', 'cancelled'])->default('pending');
+            $table->string('payment_method');
             $table->timestamps();
         });
     }
