@@ -75,9 +75,9 @@
                         <div class="cart-summary">
                             <div class="cart-content">
                                 <h3>Cart Summary</h3>
-                                <p>Sub Total<span>${{ number_format($total, 2) }}</span></p>
-                                <p>Shipping Cost<span>$1</span></p>
-                                <h4>Grand Total<span>${{ number_format($total, 2) }}</span></h4>
+                                <p >Sub Total<span class="total-amount">${{ number_format($total, 2) }}</span></p>
+                                <p>Shipping Cost<span class="shipping-amount"></span></p>
+                                <h4>Grand Total<span  class="grand-amount">${{ number_format($total, 2) }}</span></h4>
                             </div>
                             <div class="cart-btn">
                                 <button>Update Cart</button>

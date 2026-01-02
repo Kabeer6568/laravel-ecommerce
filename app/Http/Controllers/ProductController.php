@@ -83,4 +83,10 @@ class ProductController extends Controller
         ]);
 
     }
+
+    public function checkout(Request $request){
+
+        
+
+    }
 }

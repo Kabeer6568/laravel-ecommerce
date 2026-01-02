@@ -19,5 +19,5 @@ Route::get('/clear-cart', function() {
     return redirect()->back()->with('success', 'Cart cleared!');
 })->name('cart.clear');
 Route::get('/contact', function () {
-    return view('layouts/contact');
+    return view('layouts/checkout');
 });
