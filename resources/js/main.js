@@ -158,6 +158,44 @@
         ]
     });
     
+
+    function updateCartTotals() {
+
+        let shippingAmount = 200;
+        let grandTotal = 0;
+        let finalGrandTotal = 0;
+        $('tbody tr').each(function() {
+            const rowSubtotal = parseFloat($(this).find('.subtotal').text().replace('$', ''));
+            if (!isNaN(rowSubtotal)) {
+                grandTotal += rowSubtotal;
+            }
+        });
+
+
+        
+        if (grandTotal >= 2000) {
+            shippingAmount = 0;
+            $('.shipping-amount').text('Free');
+            
+            finalGrandTotal = grandTotal;
+            // $('.cart-summary .total-amount').text('$' + finalGrandTotal.toFixed(2));
+      
+        }else{
+        shippingAmount = 200;
+        $('.shipping-amount').text('$' + shippingAmount.toFixed(2));
+        finalGrandTotal = grandTotal + shippingAmount;
+        }
+
+        // Update grand total display
+        $('.cart-summary .total-amount').text('$' + grandTotal.toFixed(2));
+        // $('.shipping-amount').text(shippingAmount);
+        $('.cart-summary .grand-amount').text('$' + finalGrandTotal.toFixed(2));
+        // OR if your total is in a different place, adjust the selector
+    }
+
+        $(document).ready(function() {
+            updateCartTotals();
+        });
     
     // Quantity
     $('.qty button').on('click', function () {
@@ -219,47 +257,20 @@
         row.find('.subtotal').text('$' + subtotal.toFixed(2));
         
         // Recalculate and update grand total
-        let shippingAmount = 200;
-        let grandTotal = 0;
-        let finalGrandTotal = 0;
-        $('tbody tr').each(function() {
-            const rowSubtotal = parseFloat($(this).find('.subtotal').text().replace('$', ''));
-            if (!isNaN(rowSubtotal)) {
-                grandTotal += rowSubtotal;
-            }
-        });
+        updateCartTotals();
 
-
-
-        if (grandTotal >= 2000) {
-            shippingAmount = 0;
-            $('.shipping-amount').text('Free');
-            
-            finalGrandTotal = grandTotal;
-            $('.cart-summary .total-amount').text('$' + finalGrandTotal.toFixed(2));
-      
-        }else{
-        shippingAmount = 200;
-        $('.shipping-amount').text('$' + shippingAmount.toFixed(2));
-        finalGrandTotal = grandTotal + shippingAmount;
-        }
-
-        // Update grand total display
-        $('.cart-summary .total-amount').text('$' + grandTotal.toFixed(2));
-        $('.cart-summary .grand-amount').text('$' + finalGrandTotal.toFixed(2));
-        // OR if your total is in a different place, adjust the selector
-        
+    
     })
     .catch(error => {
         console.error('Error:', error);
         alert('Failed to update cart. Please try again.');
     });
         
-        
-
     });
     
     
+
+
     // Shipping address show hide
     $('.checkout #shipto').change(function () {
         if($(this).is(':checked')) {

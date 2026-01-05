@@ -26,7 +26,7 @@ class OrderController extends Controller
             }
         }
 
-        return view('layouts/checkout' , compact('cart' , 'total' , 'shipping' , 'grandTotal'));
+        return view('layouts.checkout' , compact('cart' , 'total' , 'shipping' , 'grandTotal'));
 
     }
 

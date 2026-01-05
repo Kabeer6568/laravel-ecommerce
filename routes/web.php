@@ -26,4 +26,4 @@ Route::get('/clear-cart', function() {
 })->name('cart.clear');
 Route::get('/contact', function () {
     return view('layouts/checkout');
-});
+})->name('product.contact');

@@ -141,7 +141,7 @@
                                 
                                 <h3>Products</h3>
                                 @foreach ($cart as $id=>$item)
-                                <p>{{ $item['name'] }}<span>{{ $item['price'] }}</span></p>
+                                <p>{{ ucFirst($item['name']) }} x {{ $item['quantity'] }}<span>{{ $item['price'] }}</span></p>
                                 
                                 @endforeach
                                 <p class="sub-total">Sub Total<span>${{ $total }}</span></p>

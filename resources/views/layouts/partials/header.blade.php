@@ -47,11 +47,11 @@
 
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav m-auto">
-                            <a href="{{}}" class="nav-item nav-link active">Home</a>
-                            <a href="product-list.html" class="nav-item nav-link">Products</a>
-                            <a href="cart.html" class="nav-item nav-link">Product Cart</a>
-                            <a href="checkout.html" class="nav-item nav-link">Checkout</a>
-                            <a href="contact.html" class="nav-item nav-link">Contact Us</a>
+                            <a href="{{route('products.data')}}" class="nav-item nav-link active">Home</a>
+                            <a href="{{route('products.list')}}" class="nav-item nav-link">Products</a>
+                            <a href="{{route('products.showCart')}}" class="nav-item nav-link">Product Cart</a>
+                            <a href="{{route('products.checkout')}}" class="nav-item nav-link">Checkout</a>
+                            <a href="{{route('product.contact')}}" class="nav-item nav-link">Contact Us</a>
                         </div>
                     </div>
                 </nav>

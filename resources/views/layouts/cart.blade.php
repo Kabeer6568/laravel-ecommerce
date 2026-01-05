@@ -44,7 +44,7 @@
                                     @foreach ($cart as $id=>$item)
                                     <tr>
                                         <td><a href="#"><img src="img/product-1.png" alt="Image"></a></td>
-                                        <td><a href="#">{{$item['name']}}</a></td>
+                                        <td><a href="#">{{ucFirst($item['name'])}}</a></td>
                                         <td id="product_price" data-product-price = "{{$item['price']}}">{{$item['price']}}</td>
                                         <td>
                                             <div class="qty" id="product_info" data-product-id="{{$id}}">
@@ -80,8 +80,12 @@
                                 <h4>Grand Total<span  class="grand-amount">${{ number_format($total, 2) }}</span></h4>
                             </div>
                             <div class="cart-btn">
-                                <button>Update Cart</button>
-                                <button>Checkout</button>
+                                <!-- <button>Update Cart</button> -->
+                                <button>
+                                    <a href="{{ route('products.checkout') }}">
+                                        Checkout
+                                    </a>
+                                </button>
                             </div>
                         </div>
                     </div>
