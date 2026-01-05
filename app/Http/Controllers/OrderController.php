@@ -13,12 +13,20 @@ class OrderController extends Controller
         $cart = session('cart' , []);
 
         $total = 0;
+        $shipping = 200;
 
         foreach($cart as $item){
             $total += $item['price'] * $item['quantity'];
+            
+            if($total > 2000){
+                $shipping = 'Free';
+            }
+            else{
+                $grandTotal = $item['price'] * $item['quantity'] + $shipping;
+            }
         }
 
-        return view('layouts/checkout' , compact('cart' , 'total'));
+        return view('layouts/checkout' , compact('cart' , 'total' , 'shipping' , 'grandTotal'));
 
     }
 
@@ -42,9 +50,18 @@ class OrderController extends Controller
         $cart = session('cart' , []);
 
         $total = 0;
+        $shipping = 200;
 
         foreach($cart as $item){
-            $total += $item['price'] * $item['quantity'];
+            
+            if($total > 2000){
+                $shipping = 'Free';
+                $total += $item['price'] * $item['quantity'];
+            }
+            else{
+                $total = $item['price'] * $item['quantity'] + $shipping;
+            }
+
         }
 
         $order = Order::create([

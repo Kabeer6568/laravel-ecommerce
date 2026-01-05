@@ -145,8 +145,8 @@
                                 
                                 @endforeach
                                 <p class="sub-total">Sub Total<span>${{ $total }}</span></p>
-                                <p class="ship-cost">Shipping Cost<span>$1</span></p>
-                                <h4>Grand Total<span>${{ $total }}</span></h4>
+                                <p class="ship-cost">Shipping Cost<span>${{ $shipping }}</span></p>
+                                <h4>Grand Total<span>${{ $grandTotal }}</span></h4>
                             </div>
                             
                         </div>
