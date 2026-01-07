@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\COntrollers\ProductController;
 use App\Http\COntrollers\OrderController;
+use App\Http\COntrollers\AuthController;
 
 Route::get('/', [ProductController:: class, 'viewProducts'])->defaults('page' , 'home')->name('products.data');
 
@@ -27,3 +28,9 @@ Route::get('/clear-cart', function() {
 Route::get('/contact', function () {
     return view('layouts/contact');
 })->name('product.contact');
+
+Route::get('/login', [AuthController::class , 'create'])->name('product.create');
+Route::post('/login', [AuthController::class , 'login'])->name('admin.login');
+
+
+Route::get('/dash', [AuthController::class , 'dash'])->middleware('auth')->name('admin.dash');

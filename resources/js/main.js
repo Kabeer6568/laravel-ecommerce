@@ -259,8 +259,20 @@
         row.find('.subtotal').text('$' + subtotal.toFixed(2));
         
         // Recalculate and update grand total
+        
         updateCartTotals();
 
+        let totalItems = 0;
+
+        Object.values(data.cart).forEach(item => {
+
+            totalItems += item.quantity;
+        
+        });
+
+        $('.product-count').text(totalItems);
+
+        
     
     })
     .catch(error => {

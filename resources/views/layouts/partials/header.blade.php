@@ -20,7 +20,7 @@
                             <div class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account</a>
                                 <div class="dropdown-menu">
-                                    <a href="#" class="dropdown-item">Login</a>
+                                    <a href="{{route('product.create')}}" class="dropdown-item">Login</a>
                                     <a href="#" class="dropdown-item">Register</a>
                                 </div>
                             </div>
@@ -28,7 +28,13 @@
                                 <a href="{{route('products.addToCart')}}">
                                 <i class="fa fa-cart-plus "></i>
                                 </a>
-                                <span class="product-count">(0)</span>
+                                <span class="product-count">
+                                @php    
+                                $cart = session('cart' , []);
+                                $count = array_sum(array_column($cart , 'quantity'));
+                                echo $count;
+                                @endphp
+                                </span>
                             </div>
                         </div>
                     </div>
