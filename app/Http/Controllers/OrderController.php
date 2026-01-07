@@ -13,16 +13,19 @@ class OrderController extends Controller
         $cart = session('cart' , []);
 
         $total = 0;
-        $shipping = 200;
-
+        $shipping = '$200';
+        
         foreach($cart as $item){
             $total += $item['price'] * $item['quantity'];
             
             if($total > 2000){
                 $shipping = 'Free';
+                $grandTotal = $total;
             }
             else{
-                $grandTotal = $item['price'] * $item['quantity'] + $shipping;
+                
+                $shipping = '$200';
+                $grandTotal = $total;
             }
         }
 

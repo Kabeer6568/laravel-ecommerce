@@ -21,7 +21,7 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-md-7">
-                        <h4 class="mb-4">Receive messages instantly with our PHP and Ajax contact form - available in the <a href="https://htmlcodex.com/downloading/?item=419">Pro Version</a> only.</h4>
+                        <h4 class="mb-4">Receive messages instantly </h4>
                         <div class="form">
                             <form action="" method="">
                                 <div class="form-row">

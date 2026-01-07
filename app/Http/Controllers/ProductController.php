@@ -34,12 +34,16 @@ class ProductController extends Controller
         $cart = session()->get('cart' , []);
 
         if (isset($cart[$product_id])) {
-            $cart[$product_id]++;
+            $cart[$product_id]['quantity']++;
         }
         else{
             $cart[$product_id] = [
                 'name' => $product->name,
+                
                 'price' => $product->price,
+
+                'image' => $product->image,
+
                 'quantity' => 1,
             ];
         }

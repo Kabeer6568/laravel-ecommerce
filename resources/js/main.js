@@ -165,7 +165,9 @@
         let grandTotal = 0;
         let finalGrandTotal = 0;
         $('tbody tr').each(function() {
-            const rowSubtotal = parseFloat($(this).find('.subtotal').text().replace('$', ''));
+            // const rowSubtotal = parseFloat($(this).find('.subtotal').text().replace('$', ''));
+            const subtotalText = $(this).find('.subtotal').text().replace('$', '').replace(/,/g, '');
+        const rowSubtotal = parseFloat(subtotalText);
             if (!isNaN(rowSubtotal)) {
                 grandTotal += rowSubtotal;
             }

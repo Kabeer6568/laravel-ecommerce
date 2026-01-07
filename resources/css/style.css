@@ -1200,7 +1200,7 @@ button.btn {
     height: 50px;
     padding: 2px 10px;
     text-align: center;
-    color: #ffffff;
+    color: #fff;
     background: #3F69AA;
     border: none;
 }
@@ -1212,7 +1212,12 @@ button.btn {
     border: 1px solid #3F69AA;
 }
 
-
+.cart-page .cart-summary .cart-btn a{
+    color: #fff;
+}
+.cart-page .cart-summary .cart-btn button:first-child a{
+    color: #3F69AA;
+}
 
 /**********************************/
 /********** Checkout CSS **********/

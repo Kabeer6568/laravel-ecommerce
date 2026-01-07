@@ -25,8 +25,10 @@
                                 </div>
                             </div>
                             <div class="cart">
-                                <i class="fa fa-cart-plus"></i>
-                                <span>(0)</span>
+                                <a href="{{route('products.addToCart')}}">
+                                <i class="fa fa-cart-plus "></i>
+                                </a>
+                                <span class="product-count">(0)</span>
                             </div>
                         </div>
                     </div>

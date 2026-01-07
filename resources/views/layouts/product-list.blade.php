@@ -49,16 +49,21 @@
                                 <div class="product-item">
                                     <div class="product-image">
                                         <a href="product-detail.html">
-                                            <img src="img/product-1.png" alt="Product Image">
+                                            <img src="{{$product->image}}" alt="Product Image">
                                         </a>
                                         <div class="product-action">
-                                            <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                            <a href="#"><i class="fa fa-heart"></i></a>
-                                            <a href="#"><i class="fa fa-search"></i></a>
+                                            <form action="{{route('products.addToCart')}}" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="product_id" value="{{$product->id}}">    
+                                            <button type="submit"><i class="fa fa-cart-plus"></i></button>
+                                        
+                                            </form>
+                                            <button href="#"><i class="fa fa-heart"></i></button>
+                                            <button href="#"><i class="fa fa-search"></i></button>
                                         </div>
                                     </div>
                                     <div class="product-content">
-                                        <div class="title"><a href="#">{{$product->name}}</a></div>
+                                        <div class="title"><a href="#">{{ucFirst($product->name)}}</a></div>
                                         <div class="ratting">
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>

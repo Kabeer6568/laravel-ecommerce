@@ -19,9 +19,14 @@
         <!-- Cart Start -->
 
         @if (empty($cart))
-            <p>
+            <h3 style="text-align: center; margin: 25px;">
                 Your Cart is empty
-            </p>
+            </h3>
+            <h5 style="text-align: center; margin: 25px;">
+            <a href="{{ route('products.list') }}">
+                Go Back
+            </a>
+            </h5>
         @else
         <div class="cart-page">
             <div class="container">
@@ -43,7 +48,7 @@
                                 <tbody class="align-middle">
                                     @foreach ($cart as $id=>$item)
                                     <tr>
-                                        <td><a href="#"><img src="img/product-1.png" alt="Image"></a></td>
+                                        <td><a href="#"><img src="{{$item['image']}}" alt="Image"></a></td>
                                         <td><a href="#">{{ucFirst($item['name'])}}</a></td>
                                         <td id="product_price" data-product-price = "{{$item['price']}}">{{$item['price']}}</td>
                                         <td>
@@ -53,6 +58,7 @@
                                                 <button class="btn-plus"><i class="fa fa-plus"></i></button>
                                             </div>
                                         </td>
+                                        <td class="subtotal">${{number_format($item['price'] * $item['quantity'], 2) }}</td>
                                         <td class="subtotal">{{number_format($item['price'] * $item['quantity'], 2) }}</td>
                                         <td><button><i class="fa fa-trash"></i></button></td>
                                     </tr>
@@ -63,7 +69,7 @@
                         </div>
                     </div>
                 </div>
-                @endif
+                
                 <div class="row">
                     <div class="col-md-6">
                         <div class="coupon">
@@ -80,18 +86,24 @@
                                 <h4>Grand Total<span  class="grand-amount">${{ number_format($total, 2) }}</span></h4>
                             </div>
                             <div class="cart-btn">
-                                <!-- <button>Update Cart</button> -->
+                                <button>
+                                <a href="{{ route('cart.clear') }}">
+                                    Clear Cart
+                                </a>
+                                </button>
                                 <button>
                                     <a href="{{ route('products.checkout') }}">
                                         Checkout
                                     </a>
                                 </button>
+                                
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        @endif
         <!-- Cart End -->
         
         
