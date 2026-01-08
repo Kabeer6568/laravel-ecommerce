@@ -34,3 +34,7 @@ Route::post('/login', [AuthController::class , 'login'])->name('admin.login');
 
 
 Route::get('/dash', [AuthController::class , 'dash'])->middleware('auth')->name('admin.dash');
+// Route::post('/dash', [AuthController::class , 'showProducts'])->middleware('auth')->name('admin.showProducts');
+Route::get('/add-products', function () {
+    return view('layouts.admin.add-products');
+});

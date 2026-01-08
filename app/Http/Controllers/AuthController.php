@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,7 +13,7 @@ class AuthController extends Controller
 
         $user = auth()->user();
 
-        return view('layouts/login'  , compact('user'));
+        return view('layouts.login'  , compact('user'));
 
     }
 
@@ -45,7 +46,17 @@ class AuthController extends Controller
 
     public function dash(){
 
-        return view('layouts/admin/index');
+        $products = Product::paginate(10);
+
+        return view('layouts.admin.index' , compact('products'));
+
+    }
+
+    public function showProducts(){
+
+        $products = Product::paginate(10);
+
+        return view('layouts.admin.index' , compact('products'));
 
     }
 }

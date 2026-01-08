@@ -21,7 +21,7 @@ class ProductController extends Controller
 
         $product = Product::where('slug' , $slug)->firstOrFail();
 
-        return view('layouts/product-details' , compact('product'));
+        return view('layouts.product-details' , compact('product'));
 
     }
 
