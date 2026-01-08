@@ -24,7 +24,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <form action="{{ route('admin.login') }}" method="post">
+                        <form action="{{ route('admin.addProduct') }}" method="post" enctype="multipart/form-data">
                             @csrf
                         <div class="login-form">
                             <div class="row">
@@ -46,21 +46,21 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label>Product Image</label>
-                                    <input class="form-control" name="image" type="file" accept="image/" required >
+                                    <input class="form-control" name="image" type="file" accept="image/*" required >
                                 </div>
                                 <div class="col-md-6">
-    <label style="display: block; margin-bottom: 8px;">Make Featured</label>
-    <div style="display: flex; gap: 20px; align-items: center;">
-        <label style="display: flex; align-items: center; gap: 5px; cursor: pointer; margin: 0;">
-            <input type="radio" name="is_featured" value="1" required style="margin: 0; cursor: pointer;">
-            <span>Yes</span>
-        </label>
-        <label style="display: flex; align-items: center; gap: 5px; cursor: pointer; margin: 0;">
-            <input type="radio" name="is_featured" value="0" required style="margin: 0; cursor: pointer;">
-            <span>No</span>
-        </label>
-    </div>
-</div>
+                                    <label style="display: block; margin-bottom: 8px;">Make Featured</label>
+                                    <div style="display: flex; gap: 20px; align-items: center;">
+                                        <label style="display: flex; align-items: center; gap: 5px; cursor: pointer; margin: 0;">
+                                            <input type="radio" name="is_featured" value="1" required style="margin: 0; cursor: pointer;">
+                                            <span>Yes</span>
+                                        </label>
+                                        <label style="display: flex; align-items: center; gap: 5px; cursor: pointer; margin: 0;">
+                                            <input type="radio" name="is_featured" value="0" required style="margin: 0; cursor: pointer;">
+                                            <span>No</span>
+                                        </label>
+                                    </div>
+                                </div>
                                 
                                 <div class="col-md-12">
                                     <button class="btn" type="submit" >Submit</button>
