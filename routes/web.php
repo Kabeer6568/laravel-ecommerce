@@ -26,7 +26,7 @@ Route::get('/clear-cart', function() {
     return redirect()->back()->with('success', 'Cart cleared!');
 })->name('cart.clear');
 Route::get('/contact', function () {
-    return view('layouts/contact');
+    return view('layouts.contact');
 })->name('product.contact');
 
 Route::get('/login', [AuthController::class , 'create'])->name('product.create');
@@ -37,3 +37,8 @@ Route::get('/dash', [AuthController::class , 'dash'])->middleware('auth')->name(
 
 Route::get('/add-product', [AuthController::class , 'addProductPage'])->middleware('auth')->name('admin.addProductForm');
 Route::post('/add-product', [AuthController::class , 'addProduct'])->middleware('auth')->name('admin.addProduct');
+
+
+Route::get('/not-allowed', function(){
+    return view('layouts.not-allowed');
+})->name('admin.notAllowed');
