@@ -11,13 +11,13 @@
                             
                             <div class="cart-btn">
                                 <button>
-                                <a href="{{ route('cart.clear') }}">
+                                <a href="{{ route('admin.addProduct') }}">
                                     Add new product
                                 </a>
                                 </button>
 
                                 <button>
-                                    <a href="{{ route('products.checkout') }}">
+                                    <a href="{{ route('logout') }}">
                                         Logout
                                     </a>
                                 </button>
@@ -64,7 +64,11 @@
                                             @endif
                                         </td>
                                         
-                                        <td><button><i class="fa fa-file"></i></button></td>
+                                        <td><button>
+                                            <a href="{{ route('admin.updateProduct' , $product->id) }}">
+                                               <i class="fa fa-file"> </i>
+                                            </a>
+                                        </button></td>
                                         <td><button><i class="fa fa-trash"></i></button></td>
                                     </tr>
                                     @endforeach

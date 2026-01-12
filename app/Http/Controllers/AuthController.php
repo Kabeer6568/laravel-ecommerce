@@ -80,4 +80,70 @@ class AuthController extends Controller
         return redirect()->route('admin.dash')->with('sucess' , 'Product Uploaded');
 
     }
+
+    public function logout(Request $request){
+
+        AUTH::logout();
+
+        $request->session()->invalidate();
+
+        return redirect()->route('products.data')->with('success' , 'You have been logged out');
+
+    }
+
+    public function updateProductPage($id){
+
+        $product = Product::findOrFail($id);
+
+        return view('layouts.admin.update-product' , compact('product'));
+
+    }
+
+    public function updateProduct(Request $request , $id){
+
+        $data = $request->validate([
+
+        'name' => 'nullable|string|max:255',
+        'slug' => 'nullable|string|max:255',
+        'price' => 'nullable|string|max:255',
+        'description' => 'nullable|string',
+        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        'is_featured' => 'nullable|in:1,0',
+
+        ]);
+
+        $product = Product::findOrFail($id);
+
+        if ($request->filled('name')) {
+            $product['name'] = $data['name'];
+        }
+        if ($request->filled('slug')) {
+            $product['slug'] = $data['slug'];
+        }
+        
+        if ($request->filled('price')) {
+            $product['price'] = $data['price'];
+        }
+        if ($request->filled('description')) {
+            $product['description'] = $data['description'];
+        }
+        if ($request->hasFile('image')) {
+
+            if ($product->image && Storage::disk('public')->exists($product->image)) {
+                Storage::disk('public')->delete($product->image);
+            }
+
+            $path = $request->file('image')->store('profiles' , 'public');
+            $product->image = $path;
+        }
+        if ($request->has('is_featured')) {
+            $product['is_featured'] = $data['is_featured'];
+        }
+
+        $product->save();
+
+        return redirect()->route('admin.dash')->with('success' , 'Blog Updated');
+
+
+    }
 }

@@ -42,3 +42,10 @@ Route::post('/add-product', [AuthController::class , 'addProduct'])->middleware(
 Route::get('/not-allowed', function(){
     return view('layouts.not-allowed');
 })->name('admin.notAllowed');
+
+
+Route::get('/logout', [AuthController::class , 'logout'])->middleware('auth')->name('logout');
+
+
+Route::get('/update-product/{id}', [AuthController::class , 'updateProductPage'])->middleware('auth')->name('admin.updateProductPage');
+Route::post('/update-product/{id}', [AuthController::class , 'updateProduct'])->middleware('auth')->name('admin.updateProduct');
