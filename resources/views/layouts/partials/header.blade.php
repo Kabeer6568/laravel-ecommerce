@@ -18,11 +18,11 @@
                     <div class="col-md-3">
                         <div class="user">
                             <div class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account</a>
-                                <div class="dropdown-menu">
+                                <a href="{{route('product.create')}}" class="dropdown-item">Login</a>
+                                <!-- <div class="dropdown-menu">
                                     <a href="{{route('product.create')}}" class="dropdown-item">Login</a>
                                     <a href="#" class="dropdown-item">Register</a>
-                                </div>
+                                </div> -->
                             </div>
                             <div class="cart">
                                 <a href="{{route('products.addToCart')}}">

@@ -143,7 +143,14 @@ class AuthController extends Controller
         $product->save();
 
         return redirect()->route('admin.dash')->with('success' , 'Blog Updated');
+    }
 
+    public function delete($id){
+
+        $product = Product::findOrFail($id);
+        $product->delete();
+
+        return redirect()->route('admin.dash')->with('success' , 'Prodeuct deleted');
 
     }
 }

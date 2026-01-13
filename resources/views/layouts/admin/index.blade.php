@@ -64,12 +64,17 @@
                                             @endif
                                         </td>
                                         
-                                        <td><button>
-                                            <a href="{{ route('admin.updateProduct' , $product->id) }}">
+                                        <td>
+                                            <a style="color: #fff" href="{{ route('admin.updateProduct' , $product->id) }}">
+                                            <button>
                                                <i class="fa fa-file"> </i>
+                                            </button>
                                             </a>
-                                        </button></td>
-                                        <td><button><i class="fa fa-trash"></i></button></td>
+                                        </td>
+                                        <td>
+                                            <a style="color: #fff" href="{{ route('admin.deleteProduct' , $product->id) }}">
+                                            <button><i class="fa fa-trash"></i></button></td>
+                                            </a>
                                     </tr>
                                     @endforeach
                                     

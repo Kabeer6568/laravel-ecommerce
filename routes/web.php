@@ -49,3 +49,6 @@ Route::get('/logout', [AuthController::class , 'logout'])->middleware('auth')->n
 
 Route::get('/update-product/{id}', [AuthController::class , 'updateProductPage'])->middleware('auth')->name('admin.updateProductPage');
 Route::post('/update-product/{id}', [AuthController::class , 'updateProduct'])->middleware('auth')->name('admin.updateProduct');
+
+
+Route::get('/delete-product/{id}', [AuthController::class , 'delete'])->middleware('auth')->name('admin.deleteProduct');
